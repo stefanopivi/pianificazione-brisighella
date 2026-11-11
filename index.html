@@ -210,7 +210,9 @@ const WHY={
 };
 
 /* ---------------- STATO ---------------- */
-const KEY='strale_brisighella_v1';
+const KEY='strale_brisighella_v2';
+/* Azzera i dati salvati dalle versioni precedenti (classi dei giorni scorsi): per un nuovo azzeramento generale basta cambiare il numero della versione qui sopra */
+try{Object.keys(localStorage).filter(k=>k.indexOf('strale_brisighella_')===0&&k!==KEY).forEach(k=>localStorage.removeItem(k))}catch(e){}
 let S=load()||{team:'',classe:'',membri:'',map:{},showDelta:false,m:Z(),l:Z(),why:{},note:'',submitted:false,submittedAt:null,tab:0,unlocked:false};
 function load(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
